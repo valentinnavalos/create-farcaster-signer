@@ -1,17 +1,36 @@
-# farcaster-examples
+## Installation
 
-A collection of Farcaster mini-apps powered by [Neynar](https://neynar.com)
+**Install project dependencies**
+
+   ```bash
+   npm install
+   ```
+
+**Configure env vars**:
+   - Copy the example environment file:
+     ```bash
+     cp .env.example .env
+     ```
+   - Edit `.env` to add your `NEYNAR_API_KEY` and `FARCASTER_DEVELOPER_MNEMONIC` (your warpcast recovery phrase).
 
 
-| Name                   | Description                                     |
-|------------------------|-------------------------------------------------|
-| [archiver-script](/archiver-script)       | Node.js script to fetch and archive casts of a specific user  |
-| [cast-action](/cast-action)               | A cast action made with Neynar's Node.js SDK and frog.fm |
-| [fc2x](/fc2x)               | A Next.js app to crosspost all of your casts from Farcaster to X |
-| [flask-app](/flask-app)                   | A Flask app that grabs casts from the EVM channel         |
-| [frames-bot](/frames-bot)                 | A Farcaster bot that replies to specific keywords with a frame created on the go specifically for the reply    |
-| [gm-bot](/gm-bot)                         | An automated Node.js messaging bot designed to cast a 'gm 🪐' message in Warpcast every day at a scheduled time          |
-| [managed-signers](/managed-signers)       | Write casts with managed signers   |
-| [wownar-react-native](/wownar-react-native) | An Expo app that demonstrates the integration of SIWN       |
-| [wownar-react-sdk](/wownar-react-sdk)     | A Next.js app that demonstrates the integration of `@neynar/react` and SIWN          |
-| [wownar](/wownar)                         | A Next.js app that demonstrates the integration of SIWN               |
+## Create Farcaster Signer
+
+**Generate a Signer** 
+
+   ```bash
+   npm get-approved-signer
+   ```
+
+**Approve the signer generated**
+
+Needed: a browser wallet with funded roughly $2 worth of OP ETH on the Optimism mainnet.
+
+1. Go to Farcaster optimism explorer
+https://optimistic.etherscan.io/address/0x00000000fc56947c7e7183f8ca4b62398caadf0b#writeContract
+
+2. Connect your wallet to the OP explorer.
+
+3. Navigate to `addFor` function and add following values inside the respective placeholders. You will see values for fidOwner, keyType, key, metadataType, metadata, deadline, sig in your terminal logs.
+
+4. Press "Write" to execute the transaction. This will create a signer for your mnemonic on the OP mainnet.
